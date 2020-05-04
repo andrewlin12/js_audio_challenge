@@ -1,0 +1,68 @@
+html, body {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+code, pre {
+  font-size: 14px;
+  background-color: #ddd;
+  color: #222;
+}
+
+h2 {
+  margin-bottom: 0;
+}
+
+code {
+  padding: 1px 3px;
+}
+
+pre {
+  font-size: 14px;
+  margin: 14px;
+  padding: 10px;
+  padding-bottom: 0;
+  display: block;
+}
+
+.editor {
+  position: relative;
+  padding: 14px;
+}
+
+textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 14px;
+  font-family: monospace;
+  display: block;
+  height: 200px;
+}
+
+.editor button {
+  margin-top: 4px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+pre.output {
+  background-color: #ccc;
+  color: #222;
+  padding-bottom: 10px;
+}
+
+pre.focus {
+  color: #aaa;
+}
+
+pre.focus b {
+  color: #000;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+blockquote {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+  background-color: #bbb;
+  padding: 5px;
+}

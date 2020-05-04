@@ -1,0 +1,14 @@
+{
+  "name": "js_audio_challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start --server . --https --no-open --no-ui --no-ghost-mode --files . --port 3001"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "browser-sync": "^2.26.7"
+  }
+}

@@ -1,0 +1,262 @@
+<html>
+
+<head>
+  <title>Programming Challenge #1</title>
+  <link rel="stylesheet" type="text/css" href="all.css">
+
+  <script>
+    var printBuffer = '';
+    window.print = (s) => {
+      printBuffer += s + '\n';
+    }
+
+    window.runCode = (id) => {
+      printBuffer = '';
+      try {
+        eval(document.getElementById('code' + id).value);
+      } catch (err) {
+        printBuffer = err.stack.toString();
+      }
+
+      document.getElementById('output' + id).innerHTML = printBuffer;
+    };
+  </script>
+</head>
+
+<body>
+  <h1>
+    Programming Challenge #1 - Counting
+  </h1>
+  <p>
+    In this first exercise, we are doing to learn how to count up and down using
+    Javascript. To do this, we are going to learn about the <code>for</code> loop,
+    which tells the computer to repeat something.
+  </p>
+
+  <p>A <code>for</code> loop looks like this:</p>
+  <pre>
+    for (var i = 0; i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    Let's copy that example code and run it to see what happens.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code1" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(1)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output1" class="output"></pre>
+
+  <br /><br />
+  <p>
+    Once you have that working, let's try to understand each piece of this code.
+    The first word <code>for</code> tells the computer that we want do to a <code>for</code>
+    loop.
+  </p>
+  <pre class="focus">
+    <b>for</b> (var i = 0; i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    The parentheses <code>(</code> and <code>)</code> contain the instructions on
+    how it should repeat.
+  </p>
+  <pre class="focus">
+    for <b>(</b>var i = 0; i < 10; i = i + 1<b>)</b> {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    First, we need to tell the computer how to setup our <code>for</code> loop.
+    The <code>var</code> tells the computer that we want to have a new variable. A
+    variable holds a number that we can change.
+  </p>
+  <pre class="focus">
+    for (<b>var</b> i = 0; i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    The <code>i</code> is the name of the variable, and we can use this name to change
+    or use the variable later
+  </p>
+  <pre class="focus">
+    for (var <b>i</b> = 0; i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    The <code>=</code> tells the computer to put a value into our variable. Here,
+    we are putting <code>0</code> into our variable.
+  </p>
+  <pre class="focus">
+    for (var i <b>= 0</b>; i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    The <code>;</code> tells the computer that we are done telling it how to
+    setup our <code>for</code> loop.
+  </p>
+  <pre class="focus">
+    for (var i = 0<b>;</b> i < 10; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    Now we want to tell the computer how many times to repeat. The <code>i</code>
+    is the same variable we made above. The <code>&lt;</code> means "less than" and
+    <code>10</code> is what we want <code>i</code> to be less than. So we are telling
+    the computer that we want to keep repeating as long as <code>i</code> is less than
+    <code>10</code>.
+  </p>
+  <pre class="focus">
+    for (var i = 0; <b>i < 10</b>; i = i + 1) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    Now we want to tell the computer how to keep track of how many times it has
+    repeated. We are using our variable <code>i</code> again and we are using
+    <code>=</code> to set its value. This time, we are setting it to the value of
+    <b>i</b> plus the number <b>1</b>.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; <b>i = i + 1</b>) {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    For example, if the varibale <code>i</code> has the value of <code>0</code> in it,
+    after we do <code>i = i + 1</code>, the variable <code>i</code> will now have the
+    value <code>1</code> in it. If we do <code>i = i + 1</code> again, <code>i</code>
+    will have a <code>2</code> in it. If we do it another time, <code>i</code> will
+    have a <code>3</code> in it.
+  </p>
+
+  <p>
+    So if you look at everything inside the parentheses in the <code>for</code> loop:
+  </p>
+  <pre class="focus">
+    for <b>(var i = 0; i < 10; i = i + 1)</b> {
+      print(i);
+    }
+  </pre>
+
+  <p>
+    it is saying:
+  </p>
+  <blockquote>
+    I want to use a variable named 'i', start it at 0, keep looping
+    while 'i' is less than 10, and each time I repeat, add 1 to i."
+  </blockquote>
+
+  <p>
+    Now we move on to what we want to repeat. That is all contained inside the
+    curly braces <code>{</code> and <code>}</code>. This is called a "scope".
+    Everything between these curly braces will be run every time we repeat.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; i = i + 1) <b>{</b>
+      print(i);
+    <b>}</b>
+  </pre>
+
+  <p>
+    Finally, inside our scope, we want to call a function named <code>print</code>. A function
+    is another piece of code. In this case, <code>print</code> will output whatever you
+    call it with.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; i = i + 1) {
+      <b>print</b>(i);
+    }
+  </pre>
+
+  <p>
+    The <code>print</code> function needs to know what to output. We can do this by giving
+    it "arguments". "Arguments" are given to the function by putting parentheses <code>(</code>
+    <code>)</code> after the function and telling the computer what variables you want to
+    give to the function.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; i = i + 1) {
+      print<b>(</b>i<b>)</b>;
+    }
+  </pre>
+
+  <p>
+    In this case, we are giving the variable <code>i</code> to the the <code>print</code> function.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; i = i + 1) {
+      print(<b>i</b>);
+    }
+  </pre>
+
+  <p>
+    Finally, the <code>;</code> tells the computer we are done with the line.
+  </p>
+  <pre class="focus">
+    for (var i = 0; i < 10; i = i + 1) {
+      print(i)<b>;</b>
+    }
+  </pre>
+
+  <p>I hope you understood all of that. If not, please ask Daddy or Mommy questions!
+    Okay, now for your challenges!!</p>
+
+  <h1>The First Challenge</h1>
+  <p>Write a <code>for</code> loop that prints all the numbers from 0 to 100, including
+    the 0 and 100.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code2" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(2)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output2" class="output"></pre>
+
+  <h1>The Second Challenge</h1>
+  <p>Write a <code>for</code> loop that prints all the numbers from 100 down to 0, including
+    the 0 and 100.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code3" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(3)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output3" class="output"></pre>
+
+  <h1>The Third Challenge</h1>
+  <p>Write a <code>for</code> loop that prints all the numbers from 0 to 100, counting by
+    2</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code4" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(4)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output4" class="output"></pre>
+
+</body>
+
+</html>
