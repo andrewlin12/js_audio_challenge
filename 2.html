@@ -1,0 +1,350 @@
+<html>
+
+<head>
+  <title>Programming Challenge #2</title>
+  <link rel="stylesheet" type="text/css" href="all.css">
+
+  <script>
+    var printBuffer = '';
+    window.print = (s) => {
+      printBuffer += s.toString().replace(/\,/g, ', ') + '\n';
+    }
+
+    function drawOnCanvas(arr) {
+      const ctx = this;
+
+      let w = ctx.canvas.clientWidth;
+      let h = ctx.canvas.clientHeight;
+      let inc = w / arr.length;
+      ctx.beginPath();
+      ctx.strokeStyle = '#444444';
+      ctx.lineWidth = 3;
+      const translated = arr.map(y => h / 2 - y);
+      ctx.moveTo(0, translated[0]);
+      translated.forEach((y, i) => {
+        ctx.lineTo(inc * i, y);
+      });
+      ctx.stroke();
+
+      window.print('Drew ' + arr.length + ' points: ' + arr);
+    };
+
+    window.runCode = (id) => {
+      printBuffer = '';
+      try {
+        eval(document.getElementById('code' + id).value);
+      } catch (err) {
+        printBuffer = err.stack.toString();
+      }
+
+      document.getElementById('output' + id).innerHTML = printBuffer;
+    };
+
+    window.drawCode = (id) => {
+      printBuffer = '';
+      const canvas = document.getElementById('canvas' + id);
+      const ctx = canvas.getContext('2d');
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+      try {
+        ctx.fillStyle = '#eeeeee';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        const draw = drawOnCanvas.bind(ctx);
+        eval(document.getElementById('code' + id).value);
+      } catch (err) {
+        printBuffer = err.stack.toString();
+      }
+
+      if (printBuffer) {
+        document.getElementById('output' + id).innerHTML = printBuffer;
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <h1>
+    Programming Challenge #2 - Drawing
+  </h1>
+  <p>
+    Now that we know how to count, let's try drawing, using our newly discovered counting abilities!
+    To draw, we are first going to learn about an 'array'. An array is a list of slots where
+    each slot can hold a value (much like a variable). You can kind of think of an array as a list
+    of variables.
+  </p>
+
+  <p>
+    To use arrays, you use square backets <code>[</code> and <code>]</code>. You can use or change
+    the value of slot in the array by telling the computer which `index` you want to use. For
+    example, <code>array[0]</code> tells the computer you want to use the first slot in the array
+    (arrays always start counting at 0). <code>array[1]</code> is the second slot and
+    <code>array[2]</code> is the third slot.
+  </p>
+  <pre>
+    var myArray = [];
+    myArray[0] = 123;
+    myArray[1] = 456;
+    print(myArray[0]);
+    print(myArray[1]);
+  </pre>
+
+  <p>
+    Let's copy that example code and run it to see what happens.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code1" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(1)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output1" class="output"></pre>
+
+  <br /><br />
+  <p>
+    Let's try to understand each piece of this code. Just like before,
+    the <code>var</code> tells the computer that we want to have a new variable, and this time
+    the variable is called <code>myArray</code> and we are setting it to an empty array, which is
+    the <code>[]</code>. Just like before <code>;</code> tells the computer that we at the end of
+    the line.
+  </p>
+  <pre class="focus">
+    <b>var myArray = [];</b>
+    myArray[0] = 123;
+    myArray[1] = 456;
+    print(myArray[0]);
+    print(myArray[1]);
+  </pre>
+
+  <p>
+    Now we are setting the first slot in the array. We do this by first telling the computer
+    that we are using the varible <code>myArray</code> we created above. Then we tell it we want
+    the first slot <code>[0]</code> (remember 0 is the first slot, 1 is the second, 2 is the third,
+    etc.).
+  </p>
+  <pre class="focus">
+    var myArray = [];
+    <b>myArray[0]</b> = 123;
+    myArray[1] = 456;
+    print(myArray[0]);
+    print(myArray[1]);
+  </pre>
+
+  <p>
+    And just like before, we are using <code>=</code> to set a value. This time we are setting it
+    to the first slot of <code>myArray</code> and we are setting it to the number <code>123</code>.
+    Again, <code>;</code> is the end of the line.
+  </p>
+  <pre class="focus">
+    var myArray = [];
+    myArray[0] <b>= 123;</b>
+    myArray[1] = 456;
+    print(myArray[0]);
+    print(myArray[1]);
+  </pre>
+
+  <p>
+    The next line is very simliar to the previous one, but now we are setting the second slot of
+    the array by using <code>[1]</code> and we setting it to the number <code>456</code>.
+  </p>
+  <pre class="focus">
+    var myArray = [];
+    myArray[0] = 123;
+    <b>myArray[1] = 456;</b>
+    print(myArray[0]);
+    print(myArray[1]);
+  </pre>
+
+  <p>
+    The next two lines use that <code>print</code> function we learned about in the last challenge
+    to display the values in the first and second slots of the array. <code>myArray[0]</code> is
+    the first slot and <code>myArray[1]</code> is the second slot.
+  </p>
+  <pre class="focus">
+    var myArray = [];
+    myArray[0] = 123;
+    myArray[1] = 456;
+    <b>print(myArray[0]);
+   print(myArray[1]);</b>
+  </pre>
+
+  <p>
+    Now let's try to combine what we learned in the first challenge with an array. Let's fill up
+    an array with the numbers from 0 to 100.
+  </p>
+  <pre>
+    var myArray = [];
+    for (var i = 0; i < 101; i = i + 1) {
+      myArray[i] = i;
+    }
+    print(myArray);
+  </pre>
+
+  <p>
+    Let's copy that example code and run it to see what happens.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code2" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode(2)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output2" class="output"></pre>
+
+  <p>
+    Hopefully you understand how and why that works. If not, ask Mommy or Daddy.
+  </p>
+
+  <p>
+    Here's another way to fill up an array.
+  </p>
+
+  <pre>
+    var myArray = [];
+    for (var i = 0; i < 101; i = i + 1) {
+      myArray.push(i);
+    }
+    print(myArray);
+  </pre>
+
+  <p>
+    You may have noticed a new <code>push</code> function that we used here. It pushes
+    a new number onto the end of the array. For example, if your array has
+    the numbers <code>5</code> and <code>8</code> in it <code>[ 5, 8 ]</code> and then
+    you <code>push(10)</code> on it, you'll get an array of <code>[ 5, 8, 10 ]</code>.
+  </p>
+
+  <p>
+    Let's copy that example code and run it to see what happens.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code2a" placeholder="Type your code here..."></textarea>
+    <button onclick="runCode('2a')">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output2a" class="output"></pre>
+
+  <p>
+    Now for something a little different. Let's try drawing using an array. We are going
+    to draw in a box where the number <code>0</code> is the middle of the box,
+    <code>-150</code> is the bottom of the box, and <code>150</code> is the top
+    of the box.
+  </p>
+
+  <pre>
+    var myArray = [];
+    for (var i = 0; i < 151; i = i + 1) {
+      myArray.push(i);
+    }
+    draw(myArray);
+  </pre>
+
+  <p>
+    So this will draw a line from the middle of the box to the top-right corner.
+    Try it!
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code3" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(3)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output3" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas3"></canvas>
+  </div>
+
+  <p>I hope you understood all of that. If not, please ask Daddy or Mommy questions!
+    Okay, now for your challenges!!</p>
+
+  <h1>The First Challenge</h1>
+  <p>Write code that draws a straight line across the middle of the box.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code4" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(4)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output4" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas4"></canvas>
+  </div>
+
+  <h1>The Second Challenge</h1>
+  <p>Write code that draws a line from the middle of the box to the bottom-right
+    corner.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code5" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(5)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output5" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas5"></canvas>
+  </div>
+
+  <h1>The Third Challenge</h1>
+  <p>Write code that draws a line from the bottom-left of the box to the top-right
+    corner.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code6" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(6)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output6" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas6"></canvas>
+  </div>
+
+  <h1>The Fourth Challenge</h1>
+  <p>Write code that draws an X across the box. It should look like this:</p>
+  <center><img src="2_x.png" /></center>
+  <p>You might need two arrays for this one!</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code7" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(7)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output7" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas7"></canvas>
+  </div>
+
+  <h1>The Super Challenge</h1>
+  <p>Write code that draws a diamond in the box!!!</p>
+  <center><img src="2_diamond.png" /></center>
+  <p>
+    You might need 2 arrays for this one and change the direction of
+    your for-loop in the middle of each one.</p>
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code8" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(8)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output8" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas8"></canvas>
+  </div>
+
+
+</body>
+
+</html>
