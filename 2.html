@@ -236,13 +236,47 @@
   <h2>Result</h2>
   <pre id="output2a" class="output"></pre>
 
+  <h1>
+    Finally We Get to Draw
+  </h1>
+
   <p>
     Now for something a little different. Let's try drawing using an array. We are going
     to draw in a box where the number <code>0</code> is the middle of the box,
     <code>-150</code> is the bottom of the box, and <code>150</code> is the top
-    of the box.
+    of the box. Each value in the array will get drawn in the box from left to right.
   </p>
 
+  <p>This might be easier to understand with an example</p>
+
+  <p>If you wanted to draw something across the middle of the box, you could do this:</p>
+  <pre>
+    var myArray = [];
+    for (var i = 0; i < 151; i = i + 1) {
+      myArray.push(0);
+    }
+    draw(myArray);
+  </pre>
+  <p>
+    Give it a try! You can try changing <code>push(0)</code> to <code>push(150)</code> to make
+    it go across the top. Or <code>push(-150)</code> to go across the bottom.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code4" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(4)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output4" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas4"></canvas>
+  </div>
+
+  <p>
+    Now let's make it a little more interesting.
+  </p>
   <pre>
     var myArray = [];
     for (var i = 0; i < 151; i = i + 1) {
@@ -252,7 +286,7 @@
   </pre>
 
   <p>
-    So this will draw a line from the middle of the box to the top-right corner.
+    This will draw a line from the middle of the box to the top-right corner.
     Try it!
   </p>
 
@@ -272,20 +306,6 @@
     Okay, now for your challenges!!</p>
 
   <h1>The First Challenge</h1>
-  <p>Write code that draws a straight line across the middle of the box.</p>
-  <h2>Code</h2>
-  <div class="editor">
-    <textarea id="code4" placeholder="Type your code here..."></textarea>
-    <button onclick="drawCode(4)">Run!</button>
-  </div>
-
-  <h2>Result</h2>
-  <pre id="output4" class="output"></pre>
-  <div class="canvas_container">
-    <canvas id="canvas4"></canvas>
-  </div>
-
-  <h1>The Second Challenge</h1>
   <p>Write code that draws a line from the middle of the box to the bottom-right
     corner.</p>
   <h2>Code</h2>
@@ -300,7 +320,7 @@
     <canvas id="canvas5"></canvas>
   </div>
 
-  <h1>The Third Challenge</h1>
+  <h1>The Second Challenge</h1>
   <p>Write code that draws a line from the bottom-left of the box to the top-right
     corner.</p>
   <h2>Code</h2>
@@ -315,7 +335,7 @@
     <canvas id="canvas6"></canvas>
   </div>
 
-  <h1>The Fourth Challenge</h1>
+  <h1>The Third Challenge</h1>
   <p>Write code that draws an X across the box. It should look like this:</p>
   <center><img src="2_x.png" /></center>
   <p>You might need two arrays for this one!</p>
