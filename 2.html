@@ -76,15 +76,20 @@
 
   <p>
     To use arrays, you use square backets <code>[</code> and <code>]</code>. You can use or change
-    the value of slot in the array by telling the computer which `index` you want to use. For
-    example, <code>array[0]</code> tells the computer you want to use the first slot in the array
-    (arrays always start counting at 0). <code>array[1]</code> is the second slot and
+    the value of slot in the array by telling the computer which 'index' you want to use.
+    An index is a number inside the <code>[</code> and <code>]</code> and arrays always start at
+    index <code>0</code>. For example, <code>array[0]</code> tells the computer you want to use the
+    first slot in the array. <code>array[1]</code> is the second slot and
     <code>array[2]</code> is the third slot.
+  </p>
+
+  <p>
+    Here's a simple example showing how we can make a new array and index into it.
   </p>
   <pre>
     var myArray = [];
-    myArray[0] = 123;
-    myArray[1] = 456;
+    myArray[0] = 100;
+    myArray[1] = 200;
     print(myArray[0]);
     print(myArray[1]);
   </pre>
@@ -106,66 +111,65 @@
   <p>
     Let's try to understand each piece of this code. Just like before,
     the <code>var</code> tells the computer that we want to have a new variable, and this time
-    the variable is called <code>myArray</code> and we are setting it to an empty array, which is
-    the <code>[]</code>. Just like before <code>;</code> tells the computer that we at the end of
-    the line.
+    the variable is called <code>myArray</code>. We using <code>=</code> to set
+    the variable to <code>[]</code>, which is an empty array.
+    Just like before <code>;</code> tells the computer that we at the end of the line.
   </p>
   <pre class="focus">
     <b>var myArray = [];</b>
-    myArray[0] = 123;
-    myArray[1] = 456;
+    myArray[0] = 100;
+    myArray[1] = 200;
     print(myArray[0]);
     print(myArray[1]);
   </pre>
 
   <p>
-    Now we are setting the first slot in the array. We do this by first telling the computer
+    Now we are setting the first slot in the array. We do this by telling the computer
     that we are using the varible <code>myArray</code> we created above. Then we tell it we want
     the first slot <code>[0]</code> (remember 0 is the first slot, 1 is the second, 2 is the third,
     etc.).
   </p>
   <pre class="focus">
     var myArray = [];
-    <b>myArray[0]</b> = 123;
-    myArray[1] = 456;
+    <b>myArray[0]</b> = 100;
+    myArray[1] = 200;
     print(myArray[0]);
     print(myArray[1]);
   </pre>
 
   <p>
-    And just like before, we are using <code>=</code> to set a value. This time we are setting it
-    to the first slot of <code>myArray</code> and we are setting it to the number <code>123</code>.
-    Again, <code>;</code> is the end of the line.
+    And just like before, we are using <code>=</code> to set a value. This time we are setting the
+    first slot of <code>myArray</code> using index <code>[0]</code>, and we are setting it to the
+    number <code>100</code>. Again, <code>;</code> is the end of the line.
   </p>
   <pre class="focus">
     var myArray = [];
-    myArray[0] <b>= 123;</b>
-    myArray[1] = 456;
+    myArray[0] <b>= 100;</b>
+    myArray[1] = 200;
     print(myArray[0]);
     print(myArray[1]);
   </pre>
 
   <p>
     The next line is very simliar to the previous one, but now we are setting the second slot of
-    the array by using <code>[1]</code> and we setting it to the number <code>456</code>.
+    the array by using index <code>[1]</code> and we setting it to the number <code>200</code>.
   </p>
   <pre class="focus">
     var myArray = [];
-    myArray[0] = 123;
-    <b>myArray[1] = 456;</b>
+    myArray[0] = 100;
+    <b>myArray[1] = 200;</b>
     print(myArray[0]);
     print(myArray[1]);
   </pre>
 
   <p>
-    The next two lines use that <code>print</code> function we learned about in the last challenge
-    to display the values in the first and second slots of the array. <code>myArray[0]</code> is
-    the first slot and <code>myArray[1]</code> is the second slot.
+    The next two lines use that <code>print</code> function to display the values in the array.
+    <code>myArray[0]</code> is the first slot and <code>myArray[1]</code> is the second slot.
   </p>
   <pre class="focus">
     var myArray = [];
-    myArray[0] = 123;
-    myArray[1] = 456;
+    myArray[0] = 100;
+    myArray[1] = 200;
     <b>print(myArray[0]);
    print(myArray[1]);</b>
   </pre>
@@ -177,7 +181,7 @@
   <pre>
     var myArray = [];
     for (var i = 0; i < 101; i = i + 1) {
-      myArray[i] = i;
+      myArray[i] = i * 100;
     }
     print(myArray);
   </pre>
@@ -206,7 +210,7 @@
   <pre>
     var myArray = [];
     for (var i = 0; i < 101; i = i + 1) {
-      myArray.push(i);
+      myArray.push(i * 100);
     }
     print(myArray);
   </pre>
