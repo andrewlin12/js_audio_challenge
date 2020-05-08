@@ -1,0 +1,347 @@
+<html>
+
+<head>
+  <title>Programming Challenge #3</title>
+  <link rel="stylesheet" type="text/css" href="all.css">
+  <script src="all.js"></script>
+</head>
+
+<body>
+  <h1>
+    Programming Challenge #3 - Playing Sounds
+  </h1>
+  <p>
+    Let's do more with these arrays that we can fill up. Did you know that all sound is
+    made up of waves in the air? We can use these arrays of numbers to create waves in the air.
+    First we should learn how sound on computers work!
+  </p>
+
+  <p>
+    All speakers are made out of a thing piece of material (sometimes called a 'cone')
+    that vibrates back and forth to create air waves. Usually, they use a magnet that pulls
+    on the membrane to move the cone.
+  </p>
+  <div id="speaker_img">
+    <img src="https://cdn4.explainthatstuff.com/how-a-loudspeaker-works.gif" />
+  </div>
+  <p>
+    A computer creates sound by sending negative and positive numbers to the speaker.
+    A negative number will suck the cone in and a positive number will push it out. Let's try
+    using what we learned in the last lesson to make some noise using something called a
+    'triangle wave'.
+  </p>
+
+  <pre>
+    var myArray = [];
+    for (var i = -150; i < 150; i++) {
+      myArray.push(i);
+    }
+    for (var i = 150; i > -150; i--) {
+      myArray.push(i);
+    }
+    draw(myArray);
+  </pre>
+
+  <p>
+    You might notice that we are using <code>i++</code> instead of <code>i = i + 1</code> and
+    <code>i--</code> instead of <code>i = i - 1</code>. They
+    mean the same thing, it's just less typing. You can also do things like <code>i+=2</code> to
+    add <code>2</code> to <code>i</code> or <code>i-=3</code> to subtract <code>3</code>.
+  </p>
+  <p>
+    Now let's copy that example code and run it to see what happens.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code1" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(1)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output1" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas1"></canvas>
+  </div>
+
+  <p>
+    Looks like a triangle right? Well, let's put a couple of them together.
+    Notice how we are using <code>repeat</code> to fill up the array 5 times. Also, instead of using
+    <code>i--</code> to count down from 150, we <code>push(-i)</code> onto the array instead.
+    Think about how that works.
+  </p>
+
+  <pre>
+    var myArray = [];
+    for (var repeat = 0; repeat < 5; repeat++) {
+      for (var i = -150; i < 150; i++) {
+        myArray.push(i);
+      }
+      for (var i = -150; i < 150; i++) {
+        myArray.push(-i);
+      }
+    }
+    draw(myArray);
+  </pre>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code2" placeholder="Type your code here..."></textarea>
+    <button onclick="drawCode(2)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output2" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas2"></canvas>
+  </div>
+
+  <p>
+    Cool, that is a triangle wave. Let's see what it sounds like!!
+  </p>
+
+  <pre>
+    var myArray = [];
+    for (var repeat = 0; repeat < 5; repeat++) {
+      for (var i = -50; i < 50; i++) {
+        myArray.push(i);
+      }
+      for (var i = -50; i < 50; i++) {
+        myArray.push(-i);
+      }
+    }
+    draw(myArray);
+    play(myArray);
+  </pre>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code3" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(3)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output3" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas3"></canvas>
+  </div>
+
+  <p>
+    You can make it louder by increasing how positive and negative the numbers are. Notice
+    that we are multiplying <code>i</code> by <code>5</code> when we do <code>push(i * 5)</code>.
+  </p>
+  <pre>
+    var myArray = [];
+    for (var repeat = 0; repeat < 5; repeat++) {
+      for (var i = -50; i < 50; i++) {
+        myArray.push(i * 5);
+      }
+      for (var i = -50; i < 50; i++) {
+        myArray.push(-i * 5);
+      }
+    }
+    draw(myArray);
+    play(myArray);
+  </pre>
+
+  <p>
+    Feel free to experiment with different values for <code>i * 5</code> to make it louder and
+    quieter. For example, <code>i * 0.5</code> will make it quieter.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code4" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(4)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output4" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas4"></canvas>
+  </div>
+
+
+  <p>
+    We can make it higher pitched by moving through the loop faster. Notice that we are doing
+    <code>i += 2</code> now.
+  </p>
+  <pre>
+    var myArray = [];
+    for (var repeat = 0; repeat < 5; repeat++) {
+      for (var i = -50; i < 50; i += 2) {
+        myArray.push(i);
+      }
+      for (var i = -50; i < 50; i += 2) {
+        myArray.push(-i);
+      }
+    }
+    draw(myArray);
+    play(myArray);
+  </pre>
+
+  <p>Feel free to experiment with different values instead of <code>i += 2</code>.
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code5" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(5)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output5" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas5"></canvas>
+  </div>
+
+  <p>
+    We can make it lower pitched by moving through the loop slower. Notice that we are doing
+    <code>i += 0.5</code> now.
+  </p>
+  <pre>
+    var myArray = [];
+    for (var repeat = 0; repeat < 5; repeat++) {
+      for (var i = -50; i < 50; i += 0.5) {
+        myArray.push(i);
+      }
+      for (var i = -50; i < 50; i += 0.5) {
+        myArray.push(-i);
+      }
+    }
+    draw(myArray);
+    play(myArray);
+  </pre>
+
+  <p>Feel free to experiment with different values instead <code>i += 0.5</code>.
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code6" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(6)">Run!</button>
+  </div>
+
+  <h2>Result</h2>
+  <pre id="output6" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas6"></canvas>
+  </div>
+
+  <p>I hope you understood all of that. If not, please ask Daddy or Mommy questions!
+    Okay, now for your challenges!!</p>
+
+  <h1>The First Challenge</h1>
+  <p>You can make different sounds by changing the shape of the wave. This is something
+    called a square wave.
+  </p>
+  <center><img src="3_square.png" /></center>
+  <p>
+    It is made with an array that looks like
+  </p>
+  <code>[ 50, 50,..a hundred 50's)..50, 50, -50, -50, -50,..(a hundred -50's)..-50, -50, 50, 50,..(another hundred 50's)..50,50...]</code>
+
+  <p>Can you make one and see what it sounds like?</p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code7" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(7)">Run!</button>
+  </div>
+  <h2>Result</h2>
+  <pre id="output7" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas7"></canvas>
+  </div>
+
+  <h1>The Second Challenge</h1>
+  <p>There's another one called the sawtooth wave. It look like this.</p>
+  <center><img src="3_sawtooth.png" /></center>
+  <p>
+    It is made with an array that looks like
+  </p>
+  <code>[ -50, -49, -48, -47, ... 47, 48, 49, 50, -50, -49, -48, -47, ... 47, 48, 49, 50, -50, -49 ...]</code>
+
+  <p>Can you make that one?</p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code8" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(8)">Run!</button>
+  </div>
+  <h2>Result</h2>
+  <pre id="output8" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas8"></canvas>
+  </div>
+
+  <h1>The Third Challenge</h1>
+  <p>This one is going to be a bit different. Instead of trying to make a wave, what if we just
+    make the speaker move around randomly. There is a function called <code>Math.random</code>
+    that will create a random decimal from <code>0.000</code> to <code>1.000</code> for you.
+    If you multiply it by <code>50</code> by doing <code>Math.random() * 50</code>,
+    it will give you a number between 0 and 50.
+  </p>
+
+  <p>
+    Can you fill an array with 1000 random numbers and see what it looks and sounds like?
+  </p>
+
+  <p>
+    HINT: You can add a random number to an array using <code>myArray.push(Math.random() * 100)</code>
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code9" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(9)">Run!</button>
+  </div>
+  <h2>Result</h2>
+  <pre id="output9" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas9"></canvas>
+  </div>
+
+  <p>
+    There's an extra fun bit to that one - if you hit Run over and over again, it will look and
+    sound different because it's random!
+  </p>
+
+  <h1>The Fourth Challenge</h1>
+  <p>
+    There is a special wave called a 'Sine' wave that is super smooth (and sounds smooth too!).
+    It look like this:
+  </p>
+  <center><img src="3_sine.png" /></center>
+  <p>
+    It is based on the <code>Math.sin</code> function and it takes decimal values and converts
+    them into values from <code>-1.0</code> to <code>1.0</code>. It'll complete a full cycle of
+    the numbers if you give it values from 0 to 2 x &pi;.
+  </p>
+
+  <p>
+    Can you fill an array with a sine wave and play it?
+  </p>
+
+  <p>
+    HINTS: You can add the result of the sine
+    function to an array by using <code>myArray.push(Math.sin(i))</code> and it might be useful to
+    change <code>i</code> using small decimals like <code>0.01</code>. The sounds will be smoothest
+    if you go from <code>0</code> to <code>2 * Math.PI</code>. And since <code>Math.sin(i)</code>
+    only gives back numbers from <code>-1.0</code> to <code>1.0</code>, you might want to make it
+    bigger somehow.
+  </p>
+
+  <h2>Code</h2>
+  <div class="editor">
+    <textarea id="code10" placeholder="Type your code here..."></textarea>
+    <button onclick="playCode(10)">Run!</button>
+  </div>
+  <h2>Result</h2>
+  <pre id="output10" class="output"></pre>
+  <div class="canvas_container">
+    <canvas id="canvas10"></canvas>
+  </div>
+
+
+</body>
+
+</html>

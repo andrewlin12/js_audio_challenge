@@ -3,24 +3,7 @@
 <head>
   <title>Programming Challenge #1</title>
   <link rel="stylesheet" type="text/css" href="all.css">
-
-  <script>
-    var printBuffer = '';
-    window.print = (s) => {
-      printBuffer += s + '\n';
-    }
-
-    window.runCode = (id) => {
-      printBuffer = '';
-      try {
-        eval(document.getElementById('code' + id).value);
-      } catch (err) {
-        printBuffer = err.stack.toString();
-      }
-
-      document.getElementById('output' + id).innerHTML = printBuffer;
-    };
-  </script>
+  <script src="all.js"></script>
 </head>
 
 <body>
